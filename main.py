@@ -107,7 +107,7 @@ CONFIG = {
     "secret_key": os.environ.get("SECRET_KEY", secrets.token_urlsafe(32)),
     "jwt_algorithm": "HS256",
     "jwt_expire_minutes": 10080,
-    "db_path": os.environ.get("DB_PATH", "/data/panel.db"),
+    "db_path": os.environ.get("DB_PATH", "/home/container/panel.db"),
     "admin_password": os.environ.get("ADMIN_PASSWORD", "admin"),
     "database_url": os.environ.get("DATABASE_URL", ""),
 }
@@ -164,7 +164,7 @@ DEFAULT_XHTTP_PATH = "/xhttp"
 
 SUBS: dict = {}
 SUBS_LOCK = asyncio.Lock()
-SUBS_FILE = os.path.join(os.path.dirname(os.environ.get("DB_PATH", "/data/panel.db")), "subs_state.json")
+SUBS_FILE = os.path.join(os.path.dirname(os.environ.get("DB_PATH", "/home/container/panel.db")), "subs_state.json")
 
 # -------------------- Block Domains --------------------
 def is_domain_blocked(host: str) -> bool:
