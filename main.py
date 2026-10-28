@@ -12072,11 +12072,9 @@ async def dynamic_xhttp_router(full_path: str, request: Request):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", CONFIG.get("port", 8000)))
     logger.info(f"Starting SulgX Panel on port {port}")
-    uvicorn.run(
-        app,
-        host="0.0.0.0",
-        port=port,
-        proxy_headers=True,
-        forwarded_allow_ips="*",
-        log_level="info",
-    )
+uvicorn.run(
+    app,
+    host="0.0.0.0",
+    port=int(os.environ.get("SERVER_PORT") or os.environ.get("PORT") or 8000),
+    log_level="info",
+)
